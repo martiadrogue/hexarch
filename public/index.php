@@ -5,6 +5,20 @@ use Illuminate\Http\Request;
 
 define('LARAVEL_START', microtime(true));
 
+/**
+ * Alias for debugin in cosole
+ *
+ * @param mixed ...$data
+ * @return void
+ */
+function unveil(...$data) {
+    var_dump($data);
+}
+function ud(...$data) {
+    var_dump($data);
+    exit;
+}
+
 /*
 |--------------------------------------------------------------------------
 | Check If The Application Is Under Maintenance

@@ -168,6 +168,20 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        /*
+         * hexagonal zone
+         */
+        /** login */
+        \Src\Management\Login\Infrastructure\Services\RouteServiceProvider::class,
+        \Src\Management\Login\Infrastructure\Services\DependencyServiceProvider::class,
+        /** forgot */
+        \Src\Management\Forgot\Infrastructure\Services\RouteServiceProvider::class,
+        \Src\Management\Forgot\Infrastructure\Services\DependencyServiceProvider::class,
+        /** users */
+        \Src\Application\User\Infrastructure\Services\RouteServiceProvider::class,
+        \Src\Application\User\Infrastructure\Services\DependencyServiceProvider::class,
+
     ])->toArray(),
 
     /*
