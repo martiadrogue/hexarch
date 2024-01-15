@@ -24,10 +24,11 @@ final class AuthMiddleware
             throw new AuthException('Not JWT auth', $this->badRequest());
         }
 
-        // $check = $this->loginCheckAuthenticationUseCase->__invoke($request->header('authentication'));
-        // if (!$check) {
-        //     throw new AuthException('Invalid token or invalid user or expired token', $this->unauthorized());
-        // }
+        $check = $this->loginCheckAuthenticationUseCase->__invoke($request->header('authentication'));
+
+        if (!$check) {
+            throw new AuthException('Invalid token or invalid user or expired token', $this->unauthorized());
+        }
 
         return $next($request);
     }
