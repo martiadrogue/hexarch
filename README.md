@@ -1,6 +1,45 @@
 # HEXARCH: DDD Recap
 
-Quick recopilation of all i learned about DDD
+Quick recopilation of all I learned about DDD
+
+## Access Points
+
+```shell
+curl -X POST http://127.0.0.1:8000/api/v1/login \
+-H "Content-Type: application/json" \
+-H 'authorization: 8bef0347-6482-470c-9771-e9fbde80690f' \
+-d '{"email": "1dee8LQ2cv@default.com", "password": "default"}'
+
+curl -X POST http://127.0.0.1:8000/api/v1/forgot \
+-H "Content-Type: application/json" \
+-H 'authorization: 8bef0347-6482-470c-9771-e9fbde80690f' \
+-d '{"email": "lliUNIQej34QWeh@default.com"}'
+
+curl -X GET http://127.0.0.1:8000/api/v1/users \
+-H "Content-Type: application/json"
+-H 'authorization: 8bef0347-6482-470c-9771-e9fbde80690f' \
+-H "Authentication: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3siaWF0IjoxNzA0MTI3MTA1LCJleHQiOjE3MDQxMzA3MDUsImF1ZCI6ImEyNjFjZjExNTU5MGZkOGVmMmRjZmFiZTMxNDhhOWJjYThiOTAyNjQiLCJkYXRlIjp7ImlkIjoxMCwiZW1haWwiOiIxZGVlOExRMmN2QGRlZmF1bHQuY29tIiwiZmlyc3RfbmFtZSI6ImRlZmF1bHQ5In19XQ.sRVjD6t_0LuA7RGBqdW1yX7H6UcE4oOCKDvMXd9pQ1w" \
+
+curl -X GET http://127.0.0.1:8000/api/v1/users/1 \
+-H "Content-Type: application/json"
+-H 'authorization: 8bef0347-6482-470c-9771-e9fbde80690f' \
+-H "Authentication: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3siaWF0IjoxNzA0MTI3MTA1LCJleHQiOjE3MDQxMzA3MDUsImF1ZCI6ImEyNjFjZjExNTU5MGZkOGVmMmRjZmFiZTMxNDhhOWJjYThiOTAyNjQiLCJkYXRlIjp7ImlkIjoxMCwiZW1haWwiOiIxZGVlOExRMmN2QGRlZmF1bHQuY29tIiwiZmlyc3RfbmFtZSI6ImRlZmF1bHQ5In19XQ.sRVjD6t_0LuA7RGBqdW1yX7H6UcE4oOCKDvMXd9pQ1w" \
+
+curl -X POST http://127.0.0.1:8000/api/v1/users \
+-H "Content-Type: application/json" \
+-H 'authorization: 8bef0347-6482-470c-9771-e9fbde80690f' \
+-H "Authentication: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3siaWF0IjoxNzA0MTI3MTA1LCJleHQiOjE3MDQxMzA3MDUsImF1ZCI6ImEyNjFjZjExNTU5MGZkOGVmMmRjZmFiZTMxNDhhOWJjYThiOTAyNjQiLCJkYXRlIjp7ImlkIjoxMCwiZW1haWwiOiIxZGVlOExRMmN2QGRlZmF1bHQuY29tIiwiZmlyc3RfbmFtZSI6ImRlZmF1bHQ5In19XQ.sRVjD6t_0LuA7RGBqdW1yX7H6UcE4oOCKDvMXd9pQ1w" \
+-d '{"first_name":"default manual","last_name":"default manual","email":"default.manual@default.com","cellphone":"987654321","password":"default234","state_id":2}'
+
+curl -X PUT http://127.0.0.1:8000/api/v1/users \
+-H "Content-Type: application/json" \
+-H 'authorization: 8bef0347-6482-470c-9771-e9fbde80690f' \
+-H "Authentication: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.W3siaWF0IjoxNzA0NjU3NzcxLCJleHQiOjE3MDQ2NjEzNzEsImF1ZCI6ImEyNjFjZjExNTU5MGZkOGVmMmRjZmFiZTMxNDhhOWJjYThiOTAyNjQiLCJkYXRlIjp7ImlkIjoxLCJlbWFpbCI6IkFrV0J5MVM3VVVAZGVmYXVsdC5jb20iLCJmaXJzdF9uYW1lIjoiZGVmYXVsdDAiLCJyb2xlcyI6eyJpZCI6MSwibmFtZSI6InN1cGVyX2FkbWluIn19fV0.2SuW_cpxh4-bpdD7LOlLRQgb_OuftH8wbbSv51LitTg" \
+-d '{"first_name":"default manual","last_name":"default manual","email":"default.manual@default.com","cellphone":"987654321","password":"default234","state_id":2}'
+```
+
+> - Replace the hash from Authentication header with the JWT you get after login.
+> - Also rename the file `.env.example` to `.env`
 
 ## Bounded Context
 
@@ -12,9 +51,9 @@ In a service one possible Bounded Context can be:
  - Management
  - Application
 
-Where Management is what is also known as BackEnd, and Application is what is also known as FrontEnd where the product is delivered and ready to use
+Management is what is also known as BackEnd, and Application is what is also known as FrontEnd where the product is delivered and ready to use
 
-Inside every Bounded Context that represents objects of entities of these Bounded Context. And and Entity can be defined as a key element of this context that have a role in it and can be modified
+Inside every Bounded Context that represents the objects of entities from these Bounded Context there are Entities, an Entity can be defined as a key element of this context that have a role in it and can be modified
 
 Also there are Bounded Context to share resources between Context
 
@@ -27,7 +66,7 @@ The SubDomains has 3 folders
  - Domain
  - Infrastructure
 
-### Explanation
+### SubDomain Explanation
 
 Infrastructure is in charge of the communication with the outside
 
@@ -73,7 +112,7 @@ With Controller and the use Case we can create the ValueObjects, and then create
  - Create it in Infrastructure layer
  - Declare it in the services and use it in the Controller or where ever you need to use
 
-Made wit [Laravel](https://laravel.com/)
+Made with [Laravel](https://laravel.com/)
 
 ## License
 
